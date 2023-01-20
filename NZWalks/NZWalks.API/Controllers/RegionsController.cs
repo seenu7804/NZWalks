@@ -63,6 +63,18 @@ namespace NZWalks.API.Controllers
             return Ok(regionsDTO);
         }
 
+        [HttpGet]
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetAsync(Guid id)
+        {
+            var regionDTO1 = await regionRepository.GetAsync(id);
+            if (regionDTO1 == null)
+            {
+                return NotFound();
+            }
+            return Ok(regionDTO1);
+        }
+
        
     }
 }
